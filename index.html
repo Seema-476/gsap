@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gsap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    container: {
+                        center: true,
+                        padding: "20px",
+                        screens: {
+                            'sm': "640px",
+                            'md': "768px",
+                            'lg': "1024px",
+                            'xl': "1180px",
+                        }
+                    },
+                }
+            },
+        }
+    </script>
+</head>
+
+<body>
+    <div class="h-screen">
+        <p class="text-6xl font-semibold content">Hello!</p>
+        <p class="text-6xl font-semibold world">World!</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            gsap.registerPlugin(ScrollTrigger)
+
+            gsap.from(
+                ".content",
+                {
+                    y: "100px", color: "yellow", duration: 3, start: "top bottom",
+                },
+            )
+            gsap.to(
+                ".content",
+                {
+                    y: "50vh", color: "blue",duration:3, repeat: -1, 
+                },
+            )
+            gsap.to(
+                ".content",
+                {
+                    x: "500px", color: "blue", duration: 3, repeat: -1,
+                },
+            )
+              gsap.from(
+                ".world",
+                {
+                    y: "500px", color: "yellow", duration: 3,
+                },
+            )
+            gsap.to(
+                ".world",
+                {
+                    y: "50vh", color: "blue", duration: 3, repeat: -1,
+                },
+            )
+            gsap.to(
+                ".world",
+                {
+                    x: "500px", color: "blue", duration: 3, repeat: -1,
+                },
+            )
+        });
+    </script>
+</body>
+
+</html>
