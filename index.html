@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/images/png/favicon.jfif">
     <title>Gsap</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -27,13 +28,38 @@
 </head>
 
 <body>
+    <div class="overflow-x-hidden">
     <div class="h-screen">
         <p class="text-6xl font-semibold content">Hello!</p>
         <p class="text-6xl font-semibold world">World!</p>
     </div>
+    </div>
+
+    <section class="w-full h-screen bg-slate-400 flex justify-center items-center">
+        <h1 class="text-6xl font-bold">WELCOME</h1>
+    </section>
+    <div class="main bg-blue-400 fixed top-0 left-0 w-full h-full flex justify-center items-center">
+        <div class="heading text-white text-3xl">
+            <h2 class="overflow-hidden font-bold">
+                <span id="create" class="inline-block translate-y-[100%]">1</span>
+            </h2>
+            <h2 class="overflow-hidden font-bold">
+                <span id="create" class="inline-block translate-y-[100%]">2</span>
+            </h2>
+            <h2 class="overflow-hidden font-bold">
+                <span id="create" class="inline-block translate-y-[100%]">3</span>
+            </h2>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script>
+        let tl = gsap.timeline({ defaults: { ease: "SlowMo.easeOut" } });
+        tl.to("#create", { y: '0%', duration: 0.7, stagger: 0.2, });
+        tl.to(".main", { y: '100%', duration: 1.5, delay: 0.2, });
+        tl.fromTo("h1", { opacity:0 }, { opacity: 1 , delay:0.5 });
+    </script>
     <script>
         document.addEventListener("DOMContentLoaded", (event) => {
             gsap.registerPlugin(ScrollTrigger)
@@ -41,37 +67,63 @@
             gsap.from(
                 ".content",
                 {
-                    y: "100px", color: "yellow", duration: 3, start: "top bottom",
+                    y: "100px", color: "yellow", duration: 8,
+                    scrollTrigger: {
+                        trigger: ".content",
+                        start: "top bottom",
+                        pin: "true",
+                        //    scrub: true
+                    }
                 },
             )
             gsap.to(
                 ".content",
                 {
-                    y: "50vh", color: "blue",duration:3, repeat: -1, 
+                    y: "50vh", color: "blue", duration: 8, scrollTrigger: {
+                        start: "top bottom",
+                        pin: "true",
+                        // scrub: true
+                    }
                 },
             )
             gsap.to(
                 ".content",
                 {
-                    x: "500px", color: "blue", duration: 3, repeat: -1,
+                    x: "500px", color: "blue", duration: 8, scrollTrigger: {
+                        start: "top bottom",
+                        pin: "true",
+                        // scrub: true
+                    }
                 },
             )
-              gsap.from(
+            gsap.from(
                 ".world",
                 {
-                    y: "500px", color: "yellow", duration: 3,
+                    y: "500px", color: "yellow", duration: 8, scrollTrigger: {
+                        start: "top bottom",
+                        pin: "true",
+                        // scrub: true
+                    }
                 },
             )
             gsap.to(
                 ".world",
                 {
-                    y: "50vh", color: "blue", duration: 3, repeat: -1,
+                    y: "50vh", color: "blue", duration: 8, scrollTrigger: {
+                        start: "top bottom",
+                        pin: "true",
+                        // scrub: true
+                    }
                 },
             )
             gsap.to(
                 ".world",
                 {
-                    x: "500px", color: "blue", duration: 3, repeat: -1,
+                    x: "500px", color: "blue", duration: 8, scrollTrigger: {
+                        start: "top bottom",
+                        pin: "true",
+                        // scrub: true
+                    }
                 },
             )
         });
